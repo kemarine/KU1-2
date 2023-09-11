@@ -1,5 +1,16 @@
 # Ocaml
 
+(* defining new data types of natural number *)
+# type mynat = Zero | Succ of mynat;;
+# let rec myadd x y =
+  match x with
+  | Zero -> y
+  | Succ n -> Succ (myadd n y);;
+# let rec trans x =
+  match x with
+  | Zero -> 0
+  | Succ n -> 1 + Succ(n-1);;
+
 (* creating binary tree *)
 # type btree = Leaf | Br of int * bitree * bitree
 # let t1 = Br(1, Br(2, Leaf, Leaf), Leaf);;
