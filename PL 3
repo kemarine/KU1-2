@@ -9,7 +9,7 @@
 # let rec trans x =
   match x with
   | Zero -> 0
-  | Succ n -> 1 + Succ(n-1);;
+  | Succ n -> 1 + trans(n);;
 
 (* creating binary tree *)
 # type btree = Leaf | Br of int * bitree * bitree
