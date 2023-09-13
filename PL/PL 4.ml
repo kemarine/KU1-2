@@ -12,3 +12,10 @@
 
 # let reverese l = fast_rev l [];;
 
+(* remove all objects *)
+# let rec remove_all a l =
+  match l with
+  | [] -> []
+  | hd::tl ->
+    if hd = a then (remove_all a tl)
+    else hd::(remove_all a tl);;
