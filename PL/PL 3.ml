@@ -12,7 +12,7 @@
   | Succ n -> 1 + trans(n);;
 
 (* creating binary tree *)
-# type btree = Leaf | Br of int * bitree * bitree
+# type btree = Leaf | Br of int * btree * btree
 # let t1 = Br(1, Br(2, Leaf, Leaf), Leaf);;
 # let rec count_leaves t =
   match t with 
