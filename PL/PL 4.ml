@@ -4,13 +4,13 @@
   | [] -> [a]
   | hd::tl -> hd::(insert a tl);;
 
-(* efficient way to reverese *)
+(* efficient way to reverse *)
 # let rec fast_rev l l' =
   match l with
   | [] -> l'
   | hd::tl -> fast_rev tl (hd::l');;
 
-# let reverese l = fast_rev l [];;
+# let reverse l = fast_rev l [];;
 
 (* remove all objects *)
 # let rec remove_all a l =
