@@ -21,7 +21,7 @@
 # let rec remove_first a l =
   match l with
   | [] -> []
-  | hd::tl -> if hd = a then tl else [hd] @ remove_first a tl;;
+  | hd::tl -> if hd = a then tl else hd::(remove_first a tl);;
 
 (* Insert (in sorted list) *)
 # let rec insert a l =
