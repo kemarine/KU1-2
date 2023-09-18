@@ -63,7 +63,7 @@ let rec eval : exp -> env -> value
     (match eval e1 env with
     | Bool true -> eval e2 env
     | Bool false -> eval e3 env
-    | _ -> raise (Failure "Type Error: condition must be Bool type")
+    | _ -> raise (Failure "Type Error: condition must be Bool type"))
   | LET (x, e1, e2) ->
     let v1 = eval e1 env in
       eval e2 (extend_env (x,v1) env)
