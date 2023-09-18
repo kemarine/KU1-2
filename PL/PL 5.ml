@@ -29,7 +29,7 @@ type value = Int of int | Bool of bool
 (* Environments *)
 type env = (var * value) list
 let empty_env = []
-let extend_env = (x, v) e = (x, v)::e
+let extend_env (x, v) e = (x, v)::e
 let rec apply_env e x =
   match e with
   | [] -> raise (Failure ("variable " ^ x ^ " not found"))
