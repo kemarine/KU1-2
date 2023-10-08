@@ -81,11 +81,48 @@ let rec lookup_env x e =
   | [] -> raise (Failure ("variable " ^ x ^ " is not bound in env")) 
   | (y,v)::tl -> if x = y then v else lookup_env x tl
 
+
 let rec eval : exp -> env -> value
 =fun exp env ->
   match exp with
   | PRINT e -> (print_endline (string_of_value (eval e env)); Unit)
-  | _ -> raise (Failure "Not implemented") (* TODO *)
+  | UNIT -> Unit
+  | TRUE -> Bool true
+  | FALSE -> Bool false
+  | CONST n -> Int n
+  | VAR v -> lookup_env v env
+  | ADD (a, b) ->
+    let an = eval a env in
+    let bn = eval b env in
+    match an, bn with
+    | Int an, Int bn -> Int (an + bn)
+    | _ -> raise UndefinedSemantics
+  | SUB (a, b) ->
+    let an = eval a env in
+    let bn = eval b env in
+    match an, bn with
+    | Int an, Int bn -> Int (an - bn)
+    | _ -> raise UndefinedSemantics
+  | MUL (a, b) ->
+    let an = eval a env in
+    let bn = eval b env in
+    match an, bn with
+    | Int an, Int bn -> Int (an * bn)
+    | _ -> raise UndefinedSemantics
+  | DIV (a, b) ->
+    let an = eval a env in
+    let bn = eval b env in
+    if bn = Int 0 then raise UndefinedSemantics
+    else
+      match an, bn with
+      | Int an, Int bn -> Int (an / bn)
+      | _ -> raise UndefinedSemantics
+  | EQUAL (a, b)
+    if eval a env = eval b env then Bool true
+    else Bool false
+  | LESS 
+  | _ -> raise UndefinedSemantics
 
+  
 let runml : program -> value
 =fun pgm -> eval pgm empty_env
