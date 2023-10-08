@@ -94,33 +94,47 @@ let rec eval : exp -> env -> value
   | ADD (a, b) ->
     let an = eval a env in
     let bn = eval b env in
-    match an, bn with
+    (match an, bn with
     | Int an, Int bn -> Int (an + bn)
-    | _ -> raise UndefinedSemantics
+    | _ -> raise UndefinedSemantics)
   | SUB (a, b) ->
     let an = eval a env in
     let bn = eval b env in
-    match an, bn with
+    (match an, bn with
     | Int an, Int bn -> Int (an - bn)
-    | _ -> raise UndefinedSemantics
+    | _ -> raise UndefinedSemantics)
   | MUL (a, b) ->
     let an = eval a env in
     let bn = eval b env in
-    match an, bn with
+    (match an, bn with
     | Int an, Int bn -> Int (an * bn)
-    | _ -> raise UndefinedSemantics
+    | _ -> raise UndefinedSemantics)
   | DIV (a, b) ->
     let an = eval a env in
     let bn = eval b env in
     if bn = Int 0 then raise UndefinedSemantics
     else
-      match an, bn with
+      (match an, bn with
       | Int an, Int bn -> Int (an / bn)
-      | _ -> raise UndefinedSemantics
+      | _ -> raise UndefinedSemantics)
   | EQUAL (a, b)
-    if eval a env = eval b env then Bool true
-    else Bool false
-  | LESS 
+    let an = eval a env in
+    let bn = eval b env in
+    (match an, bn with
+    | Int an, Int bn -> Bool (an = bn)
+    | Bool an, Bool bn -> Bool (an = bn)
+    | _ -> raise UndefinedSemantics)
+  | LESS (a, b)
+    let an = eval a env in
+    let bn = eval b env in
+    (match an, bn with
+    | Int an, Int bn -> Bool (an < bn)
+    | _ -> raise UndefinedSemantics)
+  | NOT e ->
+    (match eval e env with
+    | Bool x -> Bool (not x)
+    | _ -> raise UndefinedSemantics)
+  | NIL (* START FROM HERE *)
   | _ -> raise UndefinedSemantics
 
   
