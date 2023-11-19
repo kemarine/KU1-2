@@ -22,6 +22,6 @@
 19. diff
 20. calculator
 ## [Final Project](Final_Project.ml) - Implement ML- Interpreter and Typechecker
-#### ML-
+#### **ML-** : Compact yet Turing-complete functional language similar to Ocaml
 syntax:
 ![image](https://github.com/kemarine/KU1-2/assets/136975040/18c1ae1c-161b-4224-8fad-093cac833a67)
