@@ -1,6 +1,6 @@
 # COSE212 : Programming Language
 2023 Fall Programming Language Assignments
-## [Homework](Exercise.ml) - Ocaml Exercises
+## [Additional Homework](Exercise.ml) - Ocaml Exercises
 1. fib
 2. prime
 3. binarize
