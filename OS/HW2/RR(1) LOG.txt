@@ -1,0 +1,194 @@
+kmr@kmr-VirtualBox:~$ sudo ./run4
+
+Process A : I will use CPU by 7s.
+
+Process B : I will use CPU by 4s.
+
+Process C : I will use CPU by 1s.
+
+Process D : I will use CPU by 4s.
+
+Process C : Finish! My total wait time is 1s.
+
+Process B : Finish! My total wait time is 7s.
+
+Process A : Finish! My total wait time is 9s.
+
+Process D : Finish! My total wait time is 8s.
+kmr@kmr-VirtualBox:~$ sudo dmesg -c
+[  675.498459] Working: A
+[  675.599665] Working: A
+[  675.700656] Working: A
+[  675.801597] Working: A
+[  675.902648] Working: A
+[  676.004511] Working: A
+[  676.105171] Working: A
+[  676.208362] Working: A
+[  676.308526] Working: A
+[  676.409983] Working: A
+[  676.511881] ----> Turn Over: A
+[  676.612784] Working: A
+[  676.713099] Working: A
+[  676.813874] Working: A
+[  676.914161] Working: A
+[  677.017654] Working: A
+[  677.118710] Working: A
+[  677.221799] Working: A
+[  677.322307] Working: A
+[  677.422754] Working: A
+[  677.523486] Working: A
+[  677.625383] ----> Turn Over: A
+[  677.712560] Working: B
+[  677.814620] Working: B
+[  677.914838] Working: B
+[  678.015443] Working: B
+[  678.122595] Working: B
+[  678.223285] Working: B
+[  678.327194] Working: B
+[  678.435272] Working: B
+[  678.536206] Working: B
+[  678.637387] Working: B
+[  678.737619] ----> Turn Over: B
+[  678.751447] Working: A
+[  678.852549] Working: A
+[  678.953427] Working: A
+[  679.054649] Working: A
+[  679.155842] Working: A
+[  679.256182] Working: A
+[  679.356237] Working: A
+[  679.456275] Working: A
+[  679.557234] Working: A
+[  679.657836] Working: A
+[  679.759665] ----> Turn Over: A
+[  679.850713] Working: B
+[  679.951590] Working: B
+[  680.052624] Working: B
+[  680.153514] Working: B
+[  680.258576] Working: B
+[  680.359413] Working: B
+[  680.460613] Working: B
+[  680.569442] Working: B
+[  680.670463] Working: B
+[  680.772433] Working: B
+[  680.884857] ----> Turn Over: B
+[  680.930681] Working: C
+[  681.035313] Working: C
+[  681.135599] Working: C
+[  681.245849] Working: C
+[  681.348539] Working: C
+[  681.449621] Working: C
+[  681.550744] Working: C
+[  681.652491] Working: C
+[  681.753762] Working: C
+[  681.854755] Working: C
+[  681.958813] Process Finish: C
+[  682.009624] Working: A
+[  682.115555] Working: A
+[  682.224334] Working: A
+[  682.328326] Working: A
+[  682.435459] Working: A
+[  682.536958] Working: A
+[  682.637163] Working: A
+[  682.737372] Working: A
+[  682.839373] Working: A
+[  682.939881] Working: A
+[  683.040614] ----> Turn Over: A
+[  683.050544] Working: D
+[  683.152163] Working: D
+[  683.253959] Working: D
+[  683.354838] Working: D
+[  683.455477] Working: D
+[  683.556357] Working: D
+[  683.665714] Working: D
+[  683.766663] Working: D
+[  683.867369] Working: D
+[  683.969067] Working: D
+[  684.071980] ----> Turn Over: D
+[  684.142904] Working: B
+[  684.253967] Working: B
+[  684.357083] Working: B
+[  684.462928] Working: B
+[  684.563865] Working: B
+[  684.666306] Working: B
+[  684.767922] Working: B
+[  684.868664] Working: B
+[  684.969304] Working: B
+[  685.069473] Working: B
+[  685.169911] ----> Turn Over: B
+[  685.273464] Working: A
+[  685.381770] Working: A
+[  685.482003] Working: A
+[  685.583621] Working: A
+[  685.684645] Working: A
+[  685.784971] Working: A
+[  685.885658] Working: A
+[  685.986176] Working: A
+[  686.086658] Working: A
+[  686.187622] Working: A
+[  686.291343] ----> Turn Over: A
+[  686.293311] Working: D
+[  686.394168] Working: D
+[  686.494488] Working: D
+[  686.594586] Working: D
+[  686.695250] Working: D
+[  686.795683] Working: D
+[  686.895794] Working: D
+[  686.996720] Working: D
+[  687.097242] Working: D
+[  687.198749] Working: D
+[  687.299613] ----> Turn Over: D
+[  687.302687] Working: B
+[  687.404833] Working: B
+[  687.505233] Working: B
+[  687.607009] Working: B
+[  687.707807] Working: B
+[  687.808448] Working: B
+[  687.908793] Working: B
+[  688.009255] Working: B
+[  688.109601] Working: B
+[  688.210401] Working: B
+[  688.310785] Process Finish: B
+[  688.316722] Working: A
+[  688.417536] Working: A
+[  688.519062] Working: A
+[  688.619333] Working: A
+[  688.719872] Working: A
+[  688.820810] Working: A
+[  688.920996] Working: A
+[  689.025840] Working: A
+[  689.131890] Working: A
+[  689.232691] Working: A
+[  689.333320] ----> Turn Over: A
+[  689.335774] Working: D
+[  689.436368] Working: D
+[  689.547648] Working: D
+[  689.647904] Working: D
+[  689.751967] Working: D
+[  689.852099] Working: D
+[  689.952554] Working: D
+[  690.052992] Working: D
+[  690.154082] Working: D
+[  690.255060] Working: D
+[  690.355878] ----> Turn Over: D
+[  690.355885] Working: A
+[  690.456443] Working: A
+[  690.556816] Working: A
+[  690.657766] Working: A
+[  690.758622] Working: A
+[  690.859226] Working: A
+[  690.966397] Working: A
+[  691.066525] Working: A
+[  691.167188] Working: A
+[  691.267327] Working: A
+[  691.367579] Process Finish: A
+[  691.367709] Working: D
+[  691.468771] Working: D
+[  691.569095] Working: D
+[  691.670678] Working: D
+[  691.771063] Working: D
+[  691.872237] Working: D
+[  691.973591] Working: D
+[  692.076257] Working: D
+[  692.178870] Working: D
+[  692.290803] Working: D
+[  692.390906] Process Finish: D
