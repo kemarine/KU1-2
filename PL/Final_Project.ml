@@ -210,11 +210,11 @@ exception TypeError
 let tyvar_num = ref 0;;
 let fresh_tyvar () = (tyvar_num := !tyvar_num + 1; (TyVar ("t" ^ string_of_int !tyvar_num)));;
 
+let eq_exist = ref false;;
 let rec lookup_tenv x e = 
   match e with
   | [] -> fresh_tyvar()
   | (y,v)::tl -> if x = y then v else lookup_tenv x tl;;
-
 
 let rec gen_eqns tenv e typ =
   match e with
@@ -230,7 +230,7 @@ let rec gen_eqns tenv e typ =
   | EQUAL (e1, e2) -> 
     let nt1 = fresh_tyvar() in
     let nt2 = fresh_tyvar() in
-    (typ, TyBool)::(nt1, nt2)::(gen_eqns tenv e1 nt1 @ gen_eqns tenv e2 nt2)
+    (eq_exist := true; (typ, TyBool)::(nt1, nt2)::(gen_eqns tenv e1 nt1 @ gen_eqns tenv e2 nt2))
   | LESS (e1, e2) -> (typ, TyBool)::(gen_eqns tenv e1 TyInt @ gen_eqns tenv e2 TyInt)
   | NOT e -> (typ, TyBool)::(gen_eqns tenv e TyBool)
   | NIL -> [(typ, TyList (fresh_tyvar()))]
@@ -346,8 +346,16 @@ let rec unifyall eqns s =
     let s2 = unify (subst t1 s) (subst t2 s) s in
     unifyall t s2;;
 
+let rec eq_tyvar typ =
+  match typ with
+  | TyVar _ -> TyInt
+  | TyFun (a, b) -> TyFun (eq_tyvar a, eq_tyvar b)
+  | TyList a -> TyList (eq_tyvar a)
+  | _ -> typ
+
 let typecheck : program -> typ 
 =fun exp -> 
   let t = fresh_tyvar() in
   let s = unifyall (gen_eqns [] exp t) [] in
-  subst t s;;
+  let res = subst t s in
+if !eq_exist then (eq_exist := false; eq_tyvar (res)) else res;;
